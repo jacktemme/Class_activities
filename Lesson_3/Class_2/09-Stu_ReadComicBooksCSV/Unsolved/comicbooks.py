@@ -5,7 +5,13 @@ import csv
 # Prompt user for title lookup
 
 # Set path for file
-csvpath = os.path.join("..", "Resources", "comic_books.csv")
+csvpath = os.path.join(Users/jacktemme/Desktop/comic_books.csv)
+
+
+
+
+
+
 
 # Set variable to check if we found the video
 
@@ -14,6 +20,13 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     # Loop through looking for the video
+for row in csvreader:
+        if row[0] == "comic":
+                print("comic")
+        else:
+               print("not here")
+
+
 
             # Set variable to confirm we have found the video
 
