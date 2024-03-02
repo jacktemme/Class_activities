@@ -21,7 +21,7 @@ with open(csvpath, encoding='UTF-8') as csvfile:
 
 
     for row in csvreader:
-        if user_title == str(row[0]):
+        if user_title == row[0]:
 
             print(f"{row[0]} was published by {row[8]} in {row[9]}")
 
