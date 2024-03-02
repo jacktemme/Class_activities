@@ -8,13 +8,10 @@ import csv
 csvpath = os.path.join("09-Stu_ReadComicBooksCSV/Resources/comic_books.csv")
 
 # Set variable to check if we found the video
+
 found = False
-
-title = []
-publisher_name = []
-year_published = []
-
 user_title = "13 coins"
+
 # Open the CSV using the UTF-8 encoding
 with open(csvpath, encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
