@@ -1,7 +1,7 @@
 import os
 import csv
 
-census_csv = os.path.join("..", "Resources", "census_starter.csv")
+census_csv = os.path.join("12-Stu_CensusZip/Resources/census_starter.csv")
 
 # Lists to store data
 place = []
@@ -30,8 +30,8 @@ with open(census_csv) as csvfile:
         poverty_rate.append(str(percent) + "%")
         # Split the place into county and state
         split_place = row[0].split(", ")
-        county.append = split_place[0]
-        state.append = split_place[1]
+        county.append(split_place[0])
+        state.append(split_place[1])
 # Zip lists together
 cleaned_csv = list(zip(place,population,income,poverty_count,poverty_rate,county,state))
 # Set variable for output file
@@ -46,4 +46,5 @@ with open(output_file, "w", newline='') as datafile:
                     "County", "State"])
 
     # Write in zipped rows
-writer.
+    for row in cleaned_csv:
+        writer.writerow(row)
