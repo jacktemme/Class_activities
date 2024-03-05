@@ -31,7 +31,7 @@ def print_percentages(state_data):
         non_prof_grate_rate = 0
 # Find the for-profit school graduation rate
     if prof_students != 0:
-        prof_grad_rate = (public_completed / public_students)
+        prof_grad_rate = (public_completed / public_students) * 100
     
     else:
         prof_grad_rate = 0
@@ -39,7 +39,6 @@ def print_percentages(state_data):
 # Calculate the overall graduation ratetit
         tot_grad_rate = (tot_grads / tot_students) * 100
 # Print out the state's name and its graduation rates
-
 
     print(f"Stats for {state_array}")
     print(f"Public School Graduation Rate: {pub_grad_rate}")
