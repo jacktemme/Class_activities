@@ -1,42 +1,41 @@
 import os
 import csv
 
-census_csv = os.path.join("12-Stu_CensusZip/Resources/census_starter.csv")
+census_csv = "12-Stu_CensusZip/Resources/census_starter.csv"
 
-place = []
-population = []
-income = []
-poverty_count = []
-poverty_percent = []
-county = []
-state = []
+with open (census_csv, newline = "") as file:
+    csvreader = csv.reader(file, delimiter = ",")
 
-with open(census_csv) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=",")
-    
+    Place = []
+    Population = []
+    Income = []
+    Poverty_Count = []
+    Poverty_Rate = []
+    County = []
+    State = []
+
     for row in csvreader:
-        place.append(row[0])
-        population.append(row[1])
-        income.append(row[4])
-        poverty_count.append(row[8])
-        percent = round((int(row[8])/int(row[1])) *100, 2)
-        poverty_percent.append(str(percent) + "%")
-
+        
+        Place.append(row[0])
+        Population.append(row[1])
+        Income.append(row[4])
+        Poverty_Count.append(row[8])
+        Poverty_Rate.append((int(row[8])/int(row[1]))*100)
+        
         split_place = row[0].split(", ")
 
-        county.append(split_place[0])
-        state.append(split_place[1])
+        County.append(split_place[0])
+        State.append(split_place[1])
+
+cleaned_csv = list(zip (County, State, Population, Income, Poverty_Count,Poverty_Rate))
+
+output_file = os.path.join("census_final1.csv")
+
+with open(output_file, "w", newline = "") as datafile:
+    csvwriter = csv.writer(datafile)
 
 
-zipped_csv = list(zip(county,state,population,income,poverty_count,poverty_percent))
+    csvwriter.writerow(["County", "State", "Population", "Per Capita Income", "Poverty Count", "Poverty Rate"])
 
-out_file = os.path.join("final_census.csv")
-
-with open(out_file, "w", newline='') as datafile:
-    writer = csv.writer(datafile)
-
-    writer.writerow(["County", "State", "Population", "Income", "Poverty Count","Poverty Percent"])
-    
-    for row in zipped_csv:
-        writer.writerow(row)
-
+    for row in cleaned_csv:
+        csvwriter.writerow(row)
