@@ -1,7 +1,5 @@
 # Incorporate the random library
 import random
-import pandas as pd
-import numpy as np
 
 # Print Title
 print("Let's Play Rock Paper Scissors!")
